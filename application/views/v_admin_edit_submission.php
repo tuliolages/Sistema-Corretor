@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($problem_id)) $problem_id = 0;
 if (!isset($login_submit)) $login_submit = '';
 if (!isset($date_submit)) $date_submit = '';
@@ -22,12 +22,12 @@ $ext = $this->datahandler->file_extension_for_language($lang_submit);
 
 <a href="<?=base_url('/index.php/monitor/download_src/'.$problem_id.'/'.$login_submit.'/'.$time_submit)?>"><?=$filename?>.<?=$ext?></a> enviado por <strong><?=$login_submit?></strong> em <strong><?=$this->datahandler->translate_date_format($date_submit)?></strong>
 
-<? if ($compile_submit) { ?>
+<?php if ($compile_submit) { ?>
 Houve um <strong>erro de compilação</strong>:
 
-<div style="border-left: solid 2px #ddd; padding-left: 10px; font-weight: bold;"><? echo $compile_submit; ?>
+<div style="border-left: solid 2px #ddd; padding-left: 10px; font-weight: bold;"><?php echo $compile_submit; ?>
 </div>
-<? } ?>
+<?php } ?>
 </pre>
 
 <h2>Penalizar Submissão</h2>

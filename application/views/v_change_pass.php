@@ -1,12 +1,12 @@
-<?
+<?php
 if (!isset($current_pass)) $current_pass = '';
 if (!isset($new_pass)) $new_pass = '';
 if (!isset($confirm_pass)) $confirm_pass = '';
 if (!isset($is_admin)) $is_admin = FALSE;
 ?>
 <ul id="browse">
-	<? if ($is_admin) { ?> <li onclick="document.location = '<?=base_url('/index.php/monitor')?>'">Administrador</li> <? }
-	   else { ?> <li onclick="document.location = '<?=base_url('/index.php/home/perfil')?>'">Perfil</li> <? } ?>
+	<?php if ($is_admin) { ?> <li onclick="document.location = '<?=base_url('/index.php/monitor')?>'">Administrador</li> <?php }
+	   else { ?> <li onclick="document.location = '<?=base_url('/index.php/home/perfil')?>'">Perfil</li> <?php } ?>
 	<li>Mudar senha</li>
 </ul>
 <pre>

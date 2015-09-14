@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($list)) $list = array();
 if (!isset($judge_input)) $judge_input = array();
 if (!isset($input_num)) $input_num = 0;

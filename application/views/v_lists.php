@@ -10,7 +10,7 @@ Se estiver usando <strong>Java</strong> para as soluções das listas, leia as c
 <br/>
 <?php echo("<h2>Horário atual no servidor: <strong><u>".date("H:i:s")."</u></strong></h2>");?>
 
-<?
+<?php
 $lists = $this->lists->get_all_available_lists();
 foreach ($lists as $list) {
 	$running = $this->datahandler->is_now_between_time($list['data_lancamento'], $list['data_finalizacao']);
@@ -22,7 +22,7 @@ foreach ($lists as $list) {
 	<li onclick="window.location='<?=base_url('/index.php/home/list_clarifications/'.$list['id_lista'])?>'">Clarifications</li>
 	<li onclick="window.location='<?=base_url('/index.php/home/score/'.$list['id_lista'])?>'">Notas</li>
 </ul>
-<?
+<?php
 	$problems = $this->problems->get_problems_from_list($list['id_lista']);
 	foreach($problems as $pro) {
 ?>
@@ -30,8 +30,8 @@ foreach ($lists as $list) {
 	<div class="lista_questao_filename"><?=$list['nome_lista'].'Q'.$pro['numero']?></div>
 	<div class="lista_questao_name"><?=$pro['nome']?></div>
 </div>
-<? } ?>
+<?php } ?>
 
-<? } ?>
+<?php } ?>
 
 

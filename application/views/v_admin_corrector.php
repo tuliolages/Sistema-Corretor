@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($listas)) $listas = array();
 if (!isset($correcoes)) $correcoes = array();
 ?>
@@ -15,11 +15,11 @@ if (!isset($correcoes)) $correcoes = array();
 	</pre>
 	<?=form_open(base_url('/index.php/monitor/submit_correct_request'))?>
 	Corrigir Lista: <select name='corrigirLista'>
-		<?
+		<?php
 			foreach ($listas as $lista) {
 		?>
 			<option value="<?= $lista['id_lista'] ?>" ><?= $lista['nome_lista'] ?></option>
-		<?
+		<?php
 			}
 		?>
 	</select>
@@ -36,7 +36,7 @@ if (!isset($correcoes)) $correcoes = array();
 			<td class="item" style="width:150px;">Pega-Cópias</td>
 		</tr>
 		
-		<?
+		<?php
 			foreach ($correcoes as $cor) {
 				$classFeito = '';
 				$mensagemStatus = 'Aguardando Corretor';
@@ -51,15 +51,15 @@ if (!isset($correcoes)) $correcoes = array();
 				<td class="item" style="width:230px; height:100%;"><?= $cor['data_pedido'] ?></td>
 				<td class="item" style="width:150px;"> <?= $cor['nome_lista'] ?> </td>
 				<td class="item" style="width:150px;"> <?= $mensagemStatus ?> </td>
-				<td class="item" style="width:150px;"> <?
+				<td class="item" style="width:150px;"> <?php
 				if($cor['estado'] == 'Feito'){ ?>
 					<a href="<?=base_url('/index.php/monitor/get_copycatch_report/'.$cor['id_corretor'])?>">
 					relatorio.txt</a>
-				<? } else { ?>
+				<?php } else { ?>
 					relatorio.txt
-				<? } ?>
+				<?php } ?>
 			</td>
 		</tr>
-		<? } ?>
+		<?php } ?>
 	</tbody>
 </table>

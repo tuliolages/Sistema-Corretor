@@ -87,6 +87,8 @@ class DataHandler {
 				return 'cpp';
 			case 'c':
 				return 'c';
+            case 'haskell':
+                return 'hs';
 			default:
 				return 'unknown';
 		}

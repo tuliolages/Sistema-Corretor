@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($listprefix)) $listprefix = '';
 if (!isset($timebegin)) $timebegin = '';
 if (!isset($timeend)) $timeend = '';

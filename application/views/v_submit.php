@@ -1,7 +1,7 @@
-<?
+<?php
 if (!isset($problem_id)) $problem_id = 0;
 if (!isset($src)) $src = '';
-if (!isset($lang)) $lang = 'java';
+if (!isset($lang)) $lang = 'haskell';
 if (!isset($logged)) $logged = '';
 
 $num = $this->problems->get_num_for_problem($problem_id);
@@ -25,9 +25,8 @@ $question = $listprefix.'Q'.$num;
 <?=form_open(base_url('/index.php/home/submit/'.$problem_id))?>
 <input type="hidden" name="formatoQuestao" value=<?= $question ?> />
 Linguagem: <select name='lang'>
+<option value="haskell" <?=($lang == 'haskell' ? 'selected' : '')?>>haskell</option>
 <option value="java" <?=($lang == 'java' ? 'selected' : '')?>>java</option>
-<option value="c++" <?=($lang == 'c++' ? 'selected' : '')?>>c++</option>
-<option value="c" <?=($lang == 'c' ? 'selected' : '')?>>c</option>
 </select>
 
 Código fonte:
@@ -36,22 +35,22 @@ Senha:   <input name='pwd' type="password" name="senha" style="width: 200px;" />
 		 <input type="submit" value="Enviar" style="margin-left: 132px; width: 60px;"/></form>
 </pre>
 
-<?
+<?php
 $last = $this->submissions->last_submission($problem_id, $logged);
 if ($last) {
 ?>
 <h2>Última Submissão</h2><pre>
-<? if ($last['compilacao_erro']) { ?>
+<?php if ($last['compilacao_erro']) { ?>
 Houve um <strong>erro de compilação</strong> no seu último código enviado:
 
 <div style="border-left: solid 2px #ddd; padding-left: 10px; font-weight: bold;"><?=$last['compilacao_erro']?>
 </div>
 
 
-<? } ?>
+<?php } ?>
 A seguir, o código fonte (em <strong><?=$last['linguagem']?></strong>) da sua última submissão, enviada por você em <strong><?=$this->datahandler->translate_date_format($last['data_submissao'])?></strong>:
 
 <div style="border-left: solid 2px #ddd; padding-left: 10px;"><?=htmlspecialchars($last['codigo_fonte'])?>
 </div>
-<? } ?>
+<?php } ?>
 </pre>

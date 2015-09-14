@@ -40,6 +40,8 @@ public class Constantes {
 			(new File(pastaCorrecao)).mkdirs();
 			(new File(pastaMaterialCorrecao)).mkdirs();
 			(new File(pastaExecucao)).mkdirs();
+			/* TODO finally block */
+			in.close();
 		} catch (Exception e) {
 			System.out.println("Arquivo de configuracao nao se encontra na pasta do corretor. Sistema nao pode subir.");
 			System.exit(-1);
@@ -66,7 +68,13 @@ public class Constantes {
 			return ".java";
 		else if(linguagem.equalsIgnoreCase("c++"))
 			return ".cpp";
-		else
+		else if(linguagem.equalsIgnoreCase("c"))
 			return ".c";
+		else if(linguagem.equalsIgnoreCase("haskell"))
+			return ".hs";
+		else {
+			/*TODO exception*/
+			return "";
+		}
 	}
 }

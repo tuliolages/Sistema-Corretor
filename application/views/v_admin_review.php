@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($login)) $login = '';
 if (!isset($problem_id)) $problem_id=0;
 if (!isset($review_date)) $review_time='';

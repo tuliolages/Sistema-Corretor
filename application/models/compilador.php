@@ -27,6 +27,11 @@ class Compilador extends CI_Model {
 			fwrite($handle, $src);
 			fclose($handle);
 			exec('gcc '. $filedir . '.c -o ' . $filedir . '.a 2>&1', $output, $retval);
+		} else if ($lang == 'haskell') {
+			$handle = fopen($filedir . '.hs' ,'w+');
+			fwrite($handle, $src);
+			fclose($handle);
+			exec('ghc -v0 -o '. $filedir . ' ' . $filedir . '.hs 2>&1', $output, $retval);
 		}
 		system('rm -r ' . $pasta);
 		$returnText = '';

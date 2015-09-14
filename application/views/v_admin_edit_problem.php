@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($problem_id)) $problem_id = 0;
 if (!isset($problem_num)) $problem_num = 0;
 if (!isset($listprefix)) $listprefix = '';
@@ -45,7 +45,7 @@ Exemplo de saída:
 <?=form_open(base_url('/index.php/monitor/edit_problem/'.$problem_id.'/add_answer'))?>
 <h1><strong><?=$listprefix.'Q'.$problem_num?></strong> - Entradas e saídas para o corretor</h1>Nesta seção, você vê a lista de entradas e saídas já criadas.
 
-<?
+<?php
 $inputs = $this->judge->get_inputs_for_problem($problem_id);
 $it = 0;
 foreach ($inputs as $input) { ++$it;
@@ -57,7 +57,7 @@ $input_name=$listprefix.'Q'.$problem_num.'E'.$it;
 		Entrada: <a href="<?=base_url('/index.php/monitor/download_input/'.$input['id_correcao'].'/'.$input_name)?>">download</a>
 		Saida: <a href="<?=base_url('/index.php/monitor/download_output/'.$input['id_correcao'].'/'.$input_name)?>">download</a>
 		
-<? } ?>
+<?php } ?>
 <h2><a id="scroll_point_judge"></a>Enviar nova entrada e saída para o corretor</h2><strong>Atenção</strong>: Ao enviar uma nova entrada, as alterações feitas em outros campos serão perdidas. Sugestão: deixe para adicionar/remover entradas quando o resto da lista não for modificado.
 
 Peso (para média): <input name="weight" value="<?=$weight?>" type="text" style="width: 30px;" />

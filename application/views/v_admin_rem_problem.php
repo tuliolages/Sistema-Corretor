@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($problem_id)) $problem_id = 0;
 if (!isset($list)) $list = array();
 if (!isset($filename)) $filename = '';

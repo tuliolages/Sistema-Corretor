@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($problem_id)) $problem_id=0;
 if (!isset($login_request)) $login_request='';
 if (!isset($time_request)) $time_request=0;

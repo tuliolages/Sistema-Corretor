@@ -90,7 +90,7 @@ public class CorrecaoLista {
 						break;
 					}
 				}
-				// se achou o arquivo, vai começar o processo de correcao
+				// se achou o arquivo, vai comeÔøΩar o processo de correcao
 				if( achou ){
 
 					f = new File(Constantes.pastaCorrecao + "/" + logins.get(i)+ "/"+arqNaPasta[a]);
@@ -105,6 +105,10 @@ public class CorrecaoLista {
 						ling = 2;
 						Process po = r.exec("g++ -o main -Wall -lm " + arqNaPasta[a], null, new File(Constantes.pastaExecucao ));
 						po.waitFor();
+					} else if (arqNaPasta[a].charAt(arqNaPasta[a].length()-1) == 's'){ // Compila em Haskell
+						ling = 4;
+						Process po = r.exec("ghc -o " + arqNaPasta[a].substring(0, arqNaPasta[a].length()-3) + " " + arqNaPasta[a], null, new File(Constantes.pastaExecucao ));
+						po.waitFor();						
 					} else { // Compila Java, nesse caso a classe Arquivo tambem o copiada para a pasta de execucao
 						ling = 3;
 						FileUtils.copyFile(new File(Constantes.endClasseArquivo + "/Arquivo.class"), new File( Constantes.pastaExecucao + "/Arquivo.class"));
@@ -140,6 +144,7 @@ public class CorrecaoLista {
 	 * ling 1 = C
 	 * ling 2 = C++
 	 * ling 3 = Java
+	 * ling 4 = Haskell
 	 * @param nomeCodigo Aqui eh a String do nome do codigo, ou seja "LXQY.java" ou .cpp, ou .c, sem mais nada do nome do arquivo.
 	 * @param ling Representa o codigo da linguagem em que o codigo esta, os codigos estao acima.
 	 * 
@@ -152,8 +157,11 @@ public class CorrecaoLista {
 				Process p = r.exec("./main", null, new File(Constantes.pastaExecucao));
 				esperarProcess(p, tempoLimite);
 			} catch (IOException io) {
-				// o aluno pode ter lavado erro de compilacao e o arquivo nao estará la, isso da excecao.
+				// o aluno pode ter lavado erro de compilacao e o arquivo nao estarÔøΩ la, isso da excecao.
 			}
+		} else if(ling == 4){
+			Process p = r.exec("./" + nomeCodigo.substring(0, nomeCodigo.length()-3), null, new File(Constantes.pastaExecucao));
+			esperarProcess(p, tempoLimite);
 		} else {
 			Process p = r.exec("java " + nomeCodigo.substring(0, nomeCodigo.length()-5), null, new File(Constantes.pastaExecucao));
 			esperarProcess(p, tempoLimite);
@@ -163,8 +171,8 @@ public class CorrecaoLista {
 	}
 	
 	/**
-	 * Apos o tempo tempo limite, o processo será destruido.
-	 * @param p Subprocess que está rodando e que deve ser aguardado
+	 * Apos o tempo tempo limite, o processo serÔøΩ destruido.
+	 * @param p Subprocess que estÔøΩ rodando e que deve ser aguardado
 	 * @param tl Tempo limite para o processo rodar
 	 */
 	public void esperarProcess(Process p, int tl){

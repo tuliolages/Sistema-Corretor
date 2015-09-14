@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($requests)) $requests = array();
 ?>
 <ul id="browse">
@@ -9,7 +9,7 @@ if (!isset($requests)) $requests = array();
 <h1>Lista de Clarifications Pendentes</h1>
 Nesta seção você terá a lista de clarifications que foram solicitados e que ainda não foram respondidos.
 
-<?
+<?php
 	foreach ($requests as $item) {
 		$id_list = $this->problems->get_list_id_for_problem($item['id_questao']);
 		$prob_num = $this->problems->get_num_for_problem($item['id_questao']);
@@ -21,5 +21,5 @@ Nesta seção você terá a lista de clarifications que foram solicitados e que 
 
 [ <a href="<?=base_url('/index.php/monitor/answer_clarification/'.$item['id_questao'].'/'.$item['login_usuario'].'/'.strtotime($item['data_pedido']))?>">responder</a> ]
 
-<?	}
+<?php }
 ?>

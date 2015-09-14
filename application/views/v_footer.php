@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($pagina_extra)){
 	$pagina_extra='';
 }

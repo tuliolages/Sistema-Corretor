@@ -73,6 +73,7 @@ public class PCopia {
 		String questaoJava = File.separatorChar+questao+".java";
 		String questaoC = File.separatorChar+questao+".c";
 		String questaoCpp = File.separatorChar+questao+".cpp";
+		String questaoHaskell = File.separatorChar+questao+".hs";
 		File temp;
 		BufferedReader tempReader;
 		for(int i = 0; i < n; ++i){
@@ -99,6 +100,7 @@ public class PCopia {
 				comparar(i, j, questaoJava);
 				comparar(i, j, questaoC);
 				comparar(i, j, questaoCpp);
+				comparar(i, j, questaoHaskell);
 			}
 		}
 		Arrays.sort(copias, 0, qtdCopias);

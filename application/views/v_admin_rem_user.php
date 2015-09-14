@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($login)) $login='';
 ?>
 <ul id="browse">

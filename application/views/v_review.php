@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($problem_id)) $problem_id = 0;
 if (!isset($request)) $request = '';
 if (!isset($logged)) $logged = '';
@@ -25,7 +25,7 @@ Senha:   <input name='confirm_pwd' type="password" name="senha" style="width: 20
 		 <input type="submit" value="Enviar" style="margin-left: 132px; width: 60px;"/></form>
 </pre>
 
-<?
+<?php
 if ($last) {
 ?>
 
@@ -38,5 +38,5 @@ if ($last) {
 
 <div style="border-left: solid 2px #ddd; padding-left: 10px;"><?=htmlspecialchars($last['codigo_fonte'])?>
 </div>
-<? } ?>
+<?php } ?>
 </pre>

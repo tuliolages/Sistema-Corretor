@@ -1,4 +1,4 @@
-<?
+<?php
 	if (!isset($nome)) $nome = '';
 	if (!isset($login)) $login = '';
 ?>

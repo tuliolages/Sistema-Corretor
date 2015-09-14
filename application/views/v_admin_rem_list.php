@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($list_id)) $list_id = '';
 if (!isset($listprefix)) $listprefix = '';
 ?>

@@ -1,4 +1,4 @@
-<?
+<?php
 if (!isset($students)) $students = $this->user->retrieve_list_students_order();
 if (!isset($lists)) $lists = $this->lists->get_all_available_lists_asc();
 
@@ -21,21 +21,21 @@ $graded_students = $this->score->final_scores_for_lists($lists, $students);
 <tr>
 	<td class='login'></td>
 	<td class='campo'>login</td>
-	<? foreach($lists as $list) { ?>
+	<?php foreach($lists as $list) { ?>
 		<td class='campo'><?=$list['nome_lista']?></td>
-	<? } ?>
+	<?php } ?>
 </tr>
 </table>
 
-<? foreach ($graded_students as $user) { ?>
+<?php foreach ($graded_students as $user) { ?>
 	<table class='score'>
 	<tr>
 		<td class='login'><?=$user['nome']?></td>
 		<td class='nota'><?=$user['login']?></td>
-		<? foreach ($lists as $list) { ?>
+		<?php foreach ($lists as $list) { ?>
 			<td class=' <?=$this->score->get_css_type($user['final_results'][ $list['id_lista'] ])?> ' ><?=sprintf("%.2f", $user['final_results'][ $list['id_lista'] ])?>%</td>
-		<? } ?>
+		<?php } ?>
 	</tr>
 	</table>
-<? } ?>
+<?php } ?>
 

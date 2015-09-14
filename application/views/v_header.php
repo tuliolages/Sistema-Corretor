@@ -28,9 +28,9 @@ scrolls_to = function(id) {
 }
 window.onload = function() {
 	setTimeout("hide_all_warnings()", 5000);
-<? if (isset($scroll) && $scroll) { ?>
+<?php if (isset($scroll) && $scroll) { ?>
 	scrolls_to('<?=$scroll?>');
-<? } ?>
+<?php } ?>
 }
 </script>
 
@@ -55,12 +55,12 @@ if (!isset($is_admin)) $is_admin = FALSE;
 		<li onclick="window.location = '<?=base_url('/index.php/home/lists')?>';">Listas</li>
 		<li onclick="window.location = '<?=base_url('/index.php/home/pages/aulasPraticas.htm')?>';">Monitoria</li>
 		<li onclick="window.location = '<?=base_url('/index.php/home/pages/material.htm')?>';">Material</li>
-		<? if ($logged) { ?>
+		<?php if ($logged) { ?>
 			<div id="perfil_button" onclick="window.location = '<?=base_url('/index.php/home/perfil')?>';">perfil</div>
 			<div id="logout_button" onclick="window.location = '<?=base_url('/index.php/home/logout')?>';">logout</div>
-		<? } else { ?>
+		<?php } else { ?>
 			<div id="login_button" onclick="window.location = '<?=base_url('/index.php/home/login')?>';">login</div>
-		<? } ?>
+		<?php } ?>
 	</ul>
 	
 </div>
