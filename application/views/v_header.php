@@ -49,12 +49,18 @@ if (!isset($is_admin)) $is_admin = FALSE;
 	<div id="navi_shadow"></div>
 	<ul id="navi_options">
 		<div id="logo_cin"></div>
-		<li <?=($tab == 'home' ? 'class="selected"' : '')?> onclick="window.location = '<?=base_url('/index.php')?>';">Home</li>
+        <li <?=($tab == 'home' ? 'class="selected"' : '')?>>
+            <a href="<?=base_url('/index.php')?>">Home</a>
+        </li>
+        <li>
+            <a href="<?=base_url('/index.php/home/lists')?>">Listas</a>
+        </li>
+        <!--
 		<li onclick="window.location = '<?=base_url('/index.php/home/pages/avisos.htm')?>';">Avisos</li>
 		<li onclick="window.location = '<?=base_url('/index.php/home/pages/programacao.htm')?>';">Cronograma</li>
-		<li onclick="window.location = '<?=base_url('/index.php/home/lists')?>';">Listas</li>
 		<li onclick="window.location = '<?=base_url('/index.php/home/pages/aulasPraticas.htm')?>';">Monitoria</li>
 		<li onclick="window.location = '<?=base_url('/index.php/home/pages/material.htm')?>';">Material</li>
+        -->
 		<?php if ($logged) { ?>
 			<div id="perfil_button" onclick="window.location = '<?=base_url('/index.php/home/perfil')?>';">perfil</div>
 			<div id="logout_button" onclick="window.location = '<?=base_url('/index.php/home/logout')?>';">logout</div>

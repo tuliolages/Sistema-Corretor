@@ -1,5 +1,10 @@
 * {
-font-family: "Helvetica Neue", Helvetica, sans-serif, Arial;
+    font-family: "Helvetica Neue", Helvetica, sans-serif, Arial;
+    font-size: 14px;
+}
+
+form table {
+    border: none;
 }
 
 #navi {
@@ -238,27 +243,6 @@ strong, a, a:hover, a:visited {
 a, a:hover, a:visited {
 	text-decoration: none;
 	border-bottom: solid 2px #A22;
-}
-
-
-#login_block {
-	display: block;
-	position: relative;
-	width: 300px;
-	height: 72px;
-	line-height: 22px;
-}
-
-#register_block {
-	display: block;
-	position: relative;
-	width: 300px;
-	height: 300px;
-	line-height: 22px;
-}
-
-#login_div {
-	opacity: 1;
 }
 
 .lista_menu {
