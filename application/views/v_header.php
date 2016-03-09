@@ -45,30 +45,36 @@ if (!isset($is_admin)) $is_admin = FALSE;
 
 <div id="error_box" style="<?=($error == FALSE ? 'opacity: 0.0; visibility: hidden;' : 'opacity: 1.0;')?>"><div class="warning_content" onclick="return hide_box(this);"><?=($error == FALSE ? '' : $error)?></div></div>
 
-<div id="navi">
-	<div id="navi_shadow"></div>
-	<ul id="navi_options">
-		<div id="logo_cin"></div>
+<div id="navi-wrapper">
+    <ul id="navi">
+        <li>
+            <img src="<?=base_url('/img/logo_cin.png')?>" alt="CIn - UFPE" />
+        </li>
         <li <?=($tab == 'home' ? 'class="selected"' : '')?>>
             <a href="<?=base_url('/index.php')?>">Home</a>
         </li>
-        <li>
+        <li <?=($tab == 'lists' ? 'class="selected"' : '')?>>
             <a href="<?=base_url('/index.php/home/lists')?>">Listas</a>
         </li>
         <!--
-		<li onclick="window.location = '<?=base_url('/index.php/home/pages/avisos.htm')?>';">Avisos</li>
-		<li onclick="window.location = '<?=base_url('/index.php/home/pages/programacao.htm')?>';">Cronograma</li>
-		<li onclick="window.location = '<?=base_url('/index.php/home/pages/aulasPraticas.htm')?>';">Monitoria</li>
-		<li onclick="window.location = '<?=base_url('/index.php/home/pages/material.htm')?>';">Material</li>
+        <li onclick="window.location = '<?=base_url('/index.php/home/pages/avisos.htm')?>';">Avisos</li>
+        <li onclick="window.location = '<?=base_url('/index.php/home/pages/programacao.htm')?>';">Cronograma</li>
+        <li onclick="window.location = '<?=base_url('/index.php/home/pages/aulasPraticas.htm')?>';">Monitoria</li>
+        <li onclick="window.location = '<?=base_url('/index.php/home/pages/material.htm')?>';">Material</li>
         -->
-		<?php if ($logged) { ?>
-			<div id="perfil_button" onclick="window.location = '<?=base_url('/index.php/home/perfil')?>';">perfil</div>
-			<div id="logout_button" onclick="window.location = '<?=base_url('/index.php/home/logout')?>';">logout</div>
-		<?php } else { ?>
-			<div id="login_button" onclick="window.location = '<?=base_url('/index.php/home/login')?>';">login</div>
-		<?php } ?>
-	</ul>
-	
+        <?php if ($logged) { ?>
+            <li id="perfil_button">
+                <a href="<?=base_url('/index.php/home/perfil')?>">perfil</a>
+            </li>
+            <li id="logout_button">
+                <a href="<?=base_url('/index.php/home/logout')?>">logout</a>
+            </li>
+        <?php } else { ?>
+            <li id="login_button">
+                <a href="<?=base_url('/index.php/home/login')?>">login</a>
+            </li>
+        <?php } ?>
+    </ul>
 </div>
 
 <div id="content">
