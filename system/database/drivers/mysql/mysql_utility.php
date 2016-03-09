@@ -22,7 +22,7 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_mysql_utility extends CI_DB_utility {
+class CI_DB_mysqli_utility extends CI_DB_utility {
 
 	/**
 	 * List databases
@@ -143,11 +143,11 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 			$i = 0;
 			$field_str = '';
 			$is_int = array();
-			while ($field = mysql_fetch_field($query->result_id))
+			while ($field = mysqli_fetch_field($query->result_id))
 			{
 				// Most versions of MySQL store timestamp as a string
 				$is_int[$i] = (in_array(
-										strtolower(mysql_field_type($query->result_id, $i)),
+										strtolower(mysqli_field_type($query->result_id, $i)),
 										array('tinyint', 'smallint', 'mediumint', 'int', 'bigint'), //, 'timestamp'),
 										TRUE)
 										) ? TRUE : FALSE;
@@ -206,5 +206,5 @@ class CI_DB_mysql_utility extends CI_DB_utility {
 	}
 }
 
-/* End of file mysql_utility.php */
-/* Location: ./system/database/drivers/mysql/mysql_utility.php */
+/* End of file mysqli_utility.php */
+/* Location: ./system/database/drivers/mysql/mysqli_utility.php */

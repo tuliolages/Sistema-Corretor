@@ -24,7 +24,7 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_mysql_result extends CI_DB_result {
+class CI_DB_mysqli_result extends CI_DB_result {
 
 	/**
 	 * Number of rows in the result set
@@ -34,7 +34,7 @@ class CI_DB_mysql_result extends CI_DB_result {
 	 */
 	function num_rows()
 	{
-		return @mysql_num_rows($this->result_id);
+		return @mysqli_num_rows($this->result_id);
 	}
 
 	// --------------------------------------------------------------------
@@ -47,7 +47,7 @@ class CI_DB_mysql_result extends CI_DB_result {
 	 */
 	function num_fields()
 	{
-		return @mysql_num_fields($this->result_id);
+		return @mysqli_num_fields($this->result_id);
 	}
 
 	// --------------------------------------------------------------------
@@ -63,7 +63,7 @@ class CI_DB_mysql_result extends CI_DB_result {
 	function list_fields()
 	{
 		$field_names = array();
-		while ($field = mysql_fetch_field($this->result_id))
+		while ($field = mysqli_fetch_field($this->result_id))
 		{
 			$field_names[] = $field->name;
 		}
@@ -84,7 +84,7 @@ class CI_DB_mysql_result extends CI_DB_result {
 	function field_data()
 	{
 		$retval = array();
-		while ($field = mysql_fetch_field($this->result_id))
+		while ($field = mysqli_fetch_field($this->result_id))
 		{
 			$F				= new stdClass();
 			$F->name		= $field->name;
@@ -110,7 +110,7 @@ class CI_DB_mysql_result extends CI_DB_result {
 	{
 		if (is_resource($this->result_id))
 		{
-			mysql_free_result($this->result_id);
+			mysqli_free_result($this->result_id);
 			$this->result_id = FALSE;
 		}
 	}
@@ -129,7 +129,7 @@ class CI_DB_mysql_result extends CI_DB_result {
 	 */
 	function _data_seek($n = 0)
 	{
-		return mysql_data_seek($this->result_id, $n);
+		return mysqli_data_seek($this->result_id, $n);
 	}
 
 	// --------------------------------------------------------------------
@@ -144,7 +144,7 @@ class CI_DB_mysql_result extends CI_DB_result {
 	 */
 	function _fetch_assoc()
 	{
-		return mysql_fetch_assoc($this->result_id);
+		return mysqli_fetch_assoc($this->result_id);
 	}
 
 	// --------------------------------------------------------------------
@@ -159,11 +159,11 @@ class CI_DB_mysql_result extends CI_DB_result {
 	 */
 	function _fetch_object()
 	{
-		return mysql_fetch_object($this->result_id);
+		return mysqli_fetch_object($this->result_id);
 	}
 
 }
 
 
-/* End of file mysql_result.php */
-/* Location: ./system/database/drivers/mysql/mysql_result.php */
+/* End of file mysqli_result.php */
+/* Location: ./system/database/drivers/mysql/mysqli_result.php */

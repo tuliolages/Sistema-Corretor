@@ -18,14 +18,14 @@ class Backup extends CI_Model {
 			$this->db->password, $this->db->database);
 	}
 	function delete_all($host,$user,$pass,$name,$tables = '*'){
-		$link = mysql_connect($host,$user,$pass);
-		mysql_select_db($name,$link);
+		$link = mysqli_connect($host,$user,$pass);
+		mysqli_select_db($name,$link);
 
 		//get all of the tables
 		if($tables == '*') {
 			$tables = array();
-			$result = mysql_query('SHOW TABLES');
-			while($row = mysql_fetch_row($result)){
+			$result = mysqli_query('SHOW TABLES');
+			while($row = mysqli_fetch_row($result)){
 				$tables[] = $row[0];
 			}
 		}
@@ -33,23 +33,23 @@ class Backup extends CI_Model {
 		foreach($tables as $table)
 		{
 			if( $table == 'Usuario' ) continue;
-			$result = mysql_query('DELETE FROM ' . $table . '');
+			$result = mysqli_query('DELETE FROM ' . $table . '');
 		}
-		$result = mysql_query('DELETE FROM Usuario WHERE tipo_permissao <> \'administrador\'');
+		$result = mysqli_query('DELETE FROM Usuario WHERE tipo_permissao <> \'administrador\'');
 		
 	}
 
 
 	function backup_tables($host,$user,$pass,$name,$tables = '*') {
 		$return = '';
-		$link = mysql_connect($host,$user,$pass);
-		mysql_select_db($name,$link);
+		$link = mysqli_connect($host,$user,$pass);
+		mysqli_select_db($name,$link);
 
 		//get all of the tables
 		if($tables == '*') {
 			$tables = array();
-			$result = mysql_query('SHOW TABLES');
-			while($row = mysql_fetch_row($result))
+			$result = mysqli_query('SHOW TABLES');
+			while($row = mysqli_fetch_row($result))
 			{
 				$tables[] = $row[0];
 			}
@@ -62,16 +62,16 @@ class Backup extends CI_Model {
 		//cycle through
 		foreach($tables as $table)
 		{
-			$result = mysql_query('SELECT * FROM '.$table);
-			$num_fields = mysql_num_fields($result);
+			$result = mysqli_query('SELECT * FROM '.$table);
+			$num_fields = mysqli_num_fields($result);
 
 			$return .= 'DROP TABLE '.$table.';';
-			$row2 = mysql_fetch_row(mysql_query('SHOW CREATE TABLE '.$table));
+			$row2 = mysqli_fetch_row(mysqli_query('SHOW CREATE TABLE '.$table));
 			$return .= "\n\n".$row2[1].";\n\n";
 
 			for ($i = 0; $i < $num_fields; $i++) 
 			{
-				while($row = mysql_fetch_row($result))
+				while($row = mysqli_fetch_row($result))
 				{
 					$return.= 'INSERT INTO '.$table.' VALUES(';
 					for($j=0; $j<$num_fields; $j++) 

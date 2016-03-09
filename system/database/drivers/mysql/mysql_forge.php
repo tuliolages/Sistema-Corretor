@@ -22,7 +22,7 @@
  * @author		ExpressionEngine Dev Team
  * @link		http://codeigniter.com/user_guide/database/
  */
-class CI_DB_mysql_forge extends CI_DB_forge {
+class CI_DB_mysqli_forge extends CI_DB_forge {
 
 	/**
 	 * Create database
@@ -269,5 +269,5 @@ class CI_DB_mysql_forge extends CI_DB_forge {
 
 }
 
-/* End of file mysql_forge.php */
-/* Location: ./system/database/drivers/mysql/mysql_forge.php */
+/* End of file mysqli_forge.php */
+/* Location: ./system/database/drivers/mysql/mysqli_forge.php */

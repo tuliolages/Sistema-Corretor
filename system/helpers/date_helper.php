@@ -353,9 +353,9 @@ if ( ! function_exists('gmt_to_local'))
  * @param	integer Unix timestamp
  * @return	integer
  */
-if ( ! function_exists('mysql_to_unix'))
+if ( ! function_exists('mysqli_to_unix'))
 {
-	function mysql_to_unix($time = '')
+	function mysqli_to_unix($time = '')
 	{
 		// We'll remove certain characters for backward compatibility
 		// since the formatting changed with MySQL 4.1
