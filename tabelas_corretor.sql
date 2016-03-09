@@ -1,3 +1,14 @@
+USE if686cc_corretor;
+
+DROP TABLE IF EXISTS `Corretor`;
+DROP TABLE IF EXISTS `Lista_Exercicios`;
+DROP TABLE IF EXISTS `Material_Correcao`;
+DROP TABLE IF EXISTS `Nota_Lista`;
+DROP TABLE IF EXISTS `Pedido_Clarification`;
+DROP TABLE IF EXISTS `Pedido_Revisao`;
+DROP TABLE IF EXISTS `Submissao`;
+DROP TABLE IF EXISTS `Usuario`;
+DROP TABLE IF EXISTS `Questao`;
 
 CREATE TABLE `Corretor` (
   `id_corretor` int(11) NOT NULL AUTO_INCREMENT,
@@ -8,7 +19,6 @@ CREATE TABLE `Corretor` (
   `relatorio_pcopia` blob,
   PRIMARY KEY (`id_corretor`)
 );
-
 
 CREATE TABLE `Lista_Exercicios` (
   `id_lista` int(11) NOT NULL AUTO_INCREMENT,
@@ -21,7 +31,6 @@ CREATE TABLE `Lista_Exercicios` (
   PRIMARY KEY (`id_lista`),
   UNIQUE KEY `nome_lista_UNIQUE` (`nome_lista`)
 ) ;
-
 
 CREATE TABLE `Material_Correcao` (
   `id_Questao` int(11) NOT NULL,
@@ -58,7 +67,6 @@ CREATE TABLE `Pedido_Clarification` (
   KEY `fk_Pedido_Clarification_2` (`login_usuario`)
 ) ;
 
-
 CREATE TABLE `Pedido_Revisao` (
   `data_pedido` datetime NOT NULL,
   `id_questao` int(11) NOT NULL,
@@ -70,8 +78,6 @@ CREATE TABLE `Pedido_Revisao` (
   KEY `fk_Pedido_Revisao_1` (`id_questao`),
   KEY `fk_Pedido_Revisao_2` (`login_usuario`)
 );
-
-
 
 CREATE TABLE `Questao` (
   `enunciado` blob,
@@ -109,9 +115,8 @@ CREATE TABLE `Usuario` (
   `data_confirmacao` datetime DEFAULT NULL,
   PRIMARY KEY (`login`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ;
+);
 
-
-ALTER TABLE  `Corretor` CHANGE  `estado`  `estado` ENUM(  'Correcao',  'Em Andamento',  'Revisao',  'Feito' ) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT  'Correcao'
-ALTER TABLE  `Material_Correcao` CHANGE  `entrada`  `entrada` MEDIUMBLOB NOT NULL
-ALTER TABLE  `Material_Correcao` CHANGE  `saida`  `saida` MEDIUMBLOB NOT NULL
+ALTER TABLE `Corretor` MODIFY `estado` ENUM('Correcao', 'Em Andamento', 'Revisao', 'Feito') NULL DEFAULT  'Correcao';
+ALTER TABLE `Material_Correcao` MODIFY `entrada` MEDIUMBLOB NOT NULL;
+ALTER TABLE `Material_Correcao` MODIFY `saida` MEDIUMBLOB NOT NULL;
