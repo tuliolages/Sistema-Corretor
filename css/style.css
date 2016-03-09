@@ -43,6 +43,10 @@ p, ul, li, pre {
 	font-size: 14px;
 }
 
+table td {
+    padding: 0 10px 10px 0;
+}
+
 strong, a, a:hover, a:visited {
 	font-weight: bold;
 	color: #A22;
@@ -55,7 +59,8 @@ a, a:hover, a:visited {
 
 #navi-wrapper {
 	background: #111;
-    box-shadow: 0 0 5px 0 #666;
+    border-bottom: 5px solid #666;
+    box-shadow: 0 0 3px 0 #999;
 	position: fixed;
 	width: 100%;
 }
@@ -79,12 +84,13 @@ a, a:hover, a:visited {
 #navi li img {
     float: left;
 	height: 50px;
-    margin: 10px 15px 0 0;
+    margin: 5px 15px 0 0;
 	width: 50px;
 }
 
 #navi li a {
 	color: #fff;
+    border: 0;
 	display: block;
 	float: left;
 	font-size: 15px;

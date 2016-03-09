@@ -130,7 +130,7 @@ class Home extends CI_Controller {
 
 	function lists()
 	{
-		$this->load->view('v_header', array('logged'=>$this->logged, 'is_admin'=>$this->is_admin));
+		$this->load->view('v_header', array('tab' => 'lists', 'logged'=>$this->logged, 'is_admin'=>$this->is_admin));
 		$this->load->view('v_lists');
 		$this->load->view('v_footer');
 	}	
