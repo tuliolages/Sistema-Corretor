@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>IF672 [CIn-UFPE]</title>
+	<title>IF686 - PLC - CIn/UFPE</title>
 
 	<link href="<?=base_url('/css/style.css')?>" rel="stylesheet" type="text/css"/>
 	<link href="<?=base_url('/css/notas.css')?>" rel="stylesheet" type="text/css"/>
