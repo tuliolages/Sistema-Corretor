@@ -43,8 +43,8 @@ class User extends CI_Model {
     function is_pwd_correct($login='', $pwd='')
     {
     	if (!$login || !$pwd) return FALSE;
-    	$query = $this->db->query('SELECT login FROM Usuario WHERE login = "'.$login.'" AND senha = "'.$pwd.'"');
-    	return $query->num_rows() > 0;
+    	$query = $this->db->query('SELECT senha FROM Usuario WHERE login = "'.$login.'"');
+        return ($query->num_rows() > 0 && password_verify($pwd, $query->result_array()[0]["senha"]));
     }
     
     function change_pass($login='', $pwd='')
@@ -52,7 +52,7 @@ class User extends CI_Model {
     	if (!$login || !$pwd) return FALSE;
     	
     	$where = array('login' => $login);
-    	$data = array('senha' => $pwd);
+    	$data = array('senha' => password_hash($pwd, PASSWORD_DEFAULT));
     	
     	$this->db->where($where);
     	$this->db->update('Usuario', $data);
@@ -62,7 +62,7 @@ class User extends CI_Model {
     function add_user($login='', $pwd='', $nome='', $email='', $is_admin=FALSE, $skip_confirmation=FALSE)
     {
     	if (!$login || !$pwd || !$nome || !$email) return FALSE;
-    	$this->db->query("INSERT INTO Usuario (nome, tipo_permissao, email, login, senha".($skip_confirmation ? ', data_confirmacao' : '').") VALUES ('$nome', '".($is_admin ? 'administrador' : 'aluno')."', '$email', '$login', '$pwd'".($skip_confirmation ? ", '".date("Y-m-d H:i:s")."'" : '').")");
+    	$this->db->query("INSERT INTO Usuario (nome, tipo_permissao, email, login, senha".($skip_confirmation ? ', data_confirmacao' : '').") VALUES ('$nome', '".($is_admin ? 'administrador' : 'aluno')."', '$email', '$login', '".password_hash($pwd, PASSWORD_DEFAULT)."'".($skip_confirmation ? ", '".date("Y-m-d H:i:s")."'" : '').")");
     	return TRUE;
     }
     

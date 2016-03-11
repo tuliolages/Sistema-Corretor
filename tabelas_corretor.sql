@@ -15,7 +15,7 @@ CREATE TABLE `Corretor` (
   `data_pedido` datetime NOT NULL,
   `id_lista` int(11) DEFAULT NULL,
   `id_revisao` int(11) DEFAULT NULL,
-  `estado` enum('Correcao','Revisao','Feito') DEFAULT 'Correcao',
+  `estado` enum('Correcao', 'Em Andamento', 'Revisao', 'Feito') DEFAULT  'Correcao';
   `relatorio_pcopia` blob,
   PRIMARY KEY (`id_corretor`)
 );
@@ -35,8 +35,8 @@ CREATE TABLE `Lista_Exercicios` (
 CREATE TABLE `Material_Correcao` (
   `id_Questao` int(11) NOT NULL,
   `id_Correcao` int(11) NOT NULL AUTO_INCREMENT,
-  `entrada` blob NOT NULL,
-  `saida` blob NOT NULL,
+  `entrada` MEDIUMBLOB NOT NULL,
+  `saida` MEDIUMBLOB NOT NULL,
   `max_tempo_execucao` int(11) NOT NULL,
   `peso_correcao` int(11) NOT NULL,
   `formato_arquivo` varchar(45) NOT NULL,
@@ -107,16 +107,12 @@ CREATE TABLE `Submissao` (
 ) ;
 
 CREATE TABLE `Usuario` (
-  `nome` varchar(50) NOT NULL,
+  `nome` varchar(200) NOT NULL,
   `tipo_permissao` enum('aluno','administrador') NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `login` varchar(15) NOT NULL,
-  `senha` varchar(20) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `login` varchar(200) NOT NULL,
+  `senha` varchar(200) NOT NULL,
   `data_confirmacao` datetime DEFAULT NULL,
   PRIMARY KEY (`login`),
   UNIQUE KEY `email_UNIQUE` (`email`)
 );
-
-ALTER TABLE `Corretor` MODIFY `estado` ENUM('Correcao', 'Em Andamento', 'Revisao', 'Feito') NULL DEFAULT  'Correcao';
-ALTER TABLE `Material_Correcao` MODIFY `entrada` MEDIUMBLOB NOT NULL;
-ALTER TABLE `Material_Correcao` MODIFY `saida` MEDIUMBLOB NOT NULL;
